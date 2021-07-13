@@ -1,0 +1,270 @@
+$background : #272425;
+$secondbg : rgb(255, 104, 180);//#3e3926;
+$fontcolor : #fcfcff;
+$fontsize : 16px;
+$fontsize2 : 24px;
+$fontfamily : 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+@-webkit-keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+    40% {-webkit-transform: translateY(-30px);} 
+    60% {-webkit-transform: translateY(-15px);}
+ } 
+ 
+ @keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+    40% {transform: translateY(-30px);} 
+    60% {transform: translateY(-15px);}
+ }
+ 
+ .bounce { 
+    -webkit-animation-name: bounce; 
+    animation-name: bounce;
+ }
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: $background;
+    color: $fontcolor;
+    font-family: $fontfamily;
+}
+header{
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 2px 8px 2px $secondbg;
+    div{
+        display: flex;
+    }
+}
+
+.logo{
+    background-image: url('../img/logo.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 64px; 
+    height: 64px;
+    margin: 8px;
+
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+}
+
+a {
+    overflow: hidden;
+    color: $fontcolor;
+    text-decoration : none;
+    font-family: $fontfamily;
+}
+a {
+    display: block;
+    position: relative;
+    padding: 0.2em 0;
+}
+
+/* Fade in */
+a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: $secondbg;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+}
+a:hover::after,
+a:focus::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
+}
+a::after {
+    opacity : 1;
+    transform: translate3d(-100%, 0, 0);
+}
+
+a:hover::after,
+a:focus::after{
+    transform: translate3d(0, 0, 0);
+}
+
+.menu{
+    width: 100%;
+    height: 64px;
+    margin: 8px 10% 8px 10%;
+    justify-content: space-evenly;
+    nav{
+        margin: auto;
+        a{
+            font-size: $fontsize2;
+        }
+    }
+}
+p{
+    font-family: $fontfamily;
+}
+//main
+#main{
+    padding-top: 80px;
+}
+//footer
+footer{
+    box-shadow: 0px 2px 8px 2px $secondbg;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    div{
+        text-align: center;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    p{
+        font-size: $fontsize;
+        color: #8b8b8b;
+        margin: auto;
+        margin-bottom: 8px;
+    }
+    a{
+        margin: 16px;
+    }
+}
+
+/*Burger*/
+/* imports */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+/* colors */
+$colors: (
+	primary: #5634d1,
+	accent: #28dde0,
+	black: #2b3742,
+	white: white,
+);
+
+@function color($key) { @return map-get($colors, $key); }
+@function contrast-color($color,
+	$dark: color(black), $light: color(white)) {
+	@if (lightness($color) > 75) { @return $dark; }
+	@else { @return $light; }
+}
+
+$colors: map-merge($colors, (
+	text-dark: rgba(color(black), .75),
+	text-light: rgba(color(white), .75),
+));
+
+
+$nav-background: color(accent);
+$nav-width: 20rem;
+$nav-z-index: 1;
+$nav-toggle-bar-height: 0.4rem;
+$nav-toggle-bar-width: 3.6rem;
+$nav-toggle-z-index: 2;
+
+/* mixins */
+@mixin center-vertically($position: absolute) {
+	position: $position;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+@mixin transform($transform) {
+	-ms-transform: $transform;
+	-webkit-transform: $transform;
+	transform: $transform;
+}
+
+/* resets and base styles */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* nav toggle */
+.nav-toggle {
+	cursor: pointer;
+	height: 5 * $nav-toggle-bar-height;
+	right: 24px;
+	position: fixed;
+	top: 24px;
+	width: $nav-toggle-bar-width;
+	z-index: $nav-toggle-z-index;
+	&:hover { opacity: 0.8; }
+
+	.nav-toggle-bar,
+	.nav-toggle-bar::after,
+	.nav-toggle-bar::before {
+		@include center-vertically;
+		background: contrast-color($nav-background);
+		content: '';
+		height: $nav-toggle-bar-height;
+		transition: all .5s;
+		width: 100%;
+	}
+	.nav-toggle-bar { margin-top: 0; }
+	.nav-toggle-bar::after { margin-top: 2 * $nav-toggle-bar-height; }
+	.nav-toggle-bar::before { margin-top: -2 * $nav-toggle-bar-height; }
+	&.expanded .nav-toggle-bar { background: transparent; }
+	&.expanded .nav-toggle-bar::after,
+	&.expanded .nav-toggle-bar::before {
+		background: contrast-color($nav-background);
+		margin-top: 0;
+	}
+	&.expanded .nav-toggle-bar::after { @include transform(rotate(45deg)); }
+	&.expanded .nav-toggle-bar::before { @include transform(rotate(-45deg)); }
+}
+
+/* nav */
+.nav {
+	background: $nav-background;
+	color: contrast-color($nav-background);
+	cursor: pointer;
+	display: flex;
+	font-size: 2rem;
+	height: 100vh;
+	left: -$nav-width;
+	padding: 6rem 2rem 2rem 2rem;
+	position: fixed;
+	top: 0;
+	transition: left .5s;
+	width: $nav-width;
+	z-index: $nav-z-index;
+	&.expanded { left: 0; }
+}
+
+#hm-menu{
+    display: none;
+    text-align: center;
+    opacity: 0;
+    a{
+        margin: 8px;
+        font-size: $fontsize2;
+    }
+    nav{
+        width: -moz-fit-content;
+        width: fit-content;
+        margin: auto;
+    }
+}
+
+@keyframes slide {
+    0% {
+      transform: translate(500px);
+    }
+    100% {
+      transform: translate(0px);
+    }
+}
+
+.open{
+    display: block !important;  
+    animation: slide 1s !important;
+    opacity: 1 !important;
+}
