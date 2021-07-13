@@ -1,9 +1,9 @@
 <?php
-namespace App\Manager;
+namespace App\Controller;
 
 use Core\Database\Database;
 
-class ArticleManager {
+class ArticleController {
 
     private $classe = "Article";
 
