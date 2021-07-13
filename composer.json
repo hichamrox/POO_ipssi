@@ -1,8 +1,5 @@
 {
-    "autoload": {
-        "psr-4": {
-            "Cours\\" : "Core/",
-            "App\\" : "src/"
-        }
-    }
+    "name": "animals/1",
+    "description": "ok",
+    "require": {}
 }
