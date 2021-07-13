@@ -1,8 +1,12 @@
 {
+    "name": "animals/1",
+    "description": "ok",
+    "require": {},
     "autoload": {
         "psr-4": {
-            "Cours\\" : "Core/",
-            "App\\" : "src/"
+            "Core\\": "Core/",
+            "App\\": "src/",
+            "Pb\\": "public/"
         }
     }
 }
