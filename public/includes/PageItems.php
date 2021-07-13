@@ -1,5 +1,5 @@
 <?php
-namespace Fdp\includes\PageItems;
+namespace Pb\includes;
 
 class PageItems{
     //header

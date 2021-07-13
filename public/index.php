@@ -1,6 +1,6 @@
 <?php
 
-use Fdp\includes\Items;
+use Pb\includes\PageItems;
 
 define("ROOT", dirname(__DIR__). "/");
 require ROOT. "vendor/autoload.php";
