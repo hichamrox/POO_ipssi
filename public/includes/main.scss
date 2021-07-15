@@ -283,6 +283,10 @@ $nav-toggle-z-index: 2;
     width: 96%;
     display: flex;
     margin: 2%;
+    &.center{
+        margin-left: 24%;
+        padding-right: 24px;
+    }
 }
 .image-animal-ct{
     width: 40%;
@@ -297,4 +301,19 @@ $nav-toggle-z-index: 2;
     width: 60%;
     height: 100%;
     padding: 8px;
+    &.textAnimaux{
+        font-size: large;
+        a{
+            color: $secondbg;
+        }
+        .boutonVoir{
+            border: 2px solid white;
+            width: 80px;
+            padding-left: 21px;
+            margin-top: 12px;
+        }
+        .infoAnimal{
+            padding-top: 8px;
+        }
+    }
 }

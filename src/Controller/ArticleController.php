@@ -17,6 +17,7 @@ class ArticleController {
     {
         $statement = "SELECT * FROM article";
         $articles = $this->db->getData($statement, $this->classe);
+        
 
         include ROOT."templates/article/articles.php";
     }
