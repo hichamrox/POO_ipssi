@@ -1,6 +1,6 @@
 <?php
 
-use Pb\includes\PageItems;
+use Pb\PageItems;
 use App\Controller\ArticleController;
 
 define("ROOT", dirname(__DIR__). "/");

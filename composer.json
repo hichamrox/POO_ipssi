@@ -6,7 +6,7 @@
         "psr-4": {
             "Core\\": "Core/",
             "App\\": "src/",
-            "Pb\\": "public/"
+            "Pb\\": "templates/"
         }
     }
 }

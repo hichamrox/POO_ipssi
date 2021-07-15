@@ -18,7 +18,7 @@ class ArticleController {
         $result = $this->db->getData($statement, $this->classe);
 
         $content = "<ul>";
-        foreach ($result as $value) {
+        foreach ($result as $key => $value) {
             $content .= "<li><a href='$value->id'>$value->name</a></li>";
         }
         $content .= "</ul>";
