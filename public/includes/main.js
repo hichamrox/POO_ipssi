@@ -15,9 +15,22 @@ function reportWindowSize() {
     if(window.innerWidth < 761){
         menu.style.display = "none";
         document.querySelector('.nav-toggle').style.display = "flex";
+        document.querySelector('.text-animal-ct').style.width = "100%";
+        let elements = document.getElementsByClassName("animal-ct");
+        for (let i = 0; i < elements.length; i++){
+            elements[i].style.display = "block";
+            document.getElementsByClassName('text-animal-ct')[i].style.width = "100%";
+            document.getElementsByClassName('image-animal-ct')[i].style.width = "100%";
+        }
     }else{
         menu.style.display = "flex";
         document.querySelector('.nav-toggle').style.display = "none";
+        let elements = document.getElementsByClassName("animal-ct");
+        for (let i = 0; i < elements.length; i++){
+            elements[i].style.display = "flex";
+            document.getElementsByClassName('text-animal-ct')[i].style.width = "70%";
+            document.getElementsByClassName('image-animal-ct')[i].style.width = "30%";
+        }
     }
 }
 reportWindowSize();

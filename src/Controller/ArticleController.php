@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Article;
 use Core\Database\Database;
 
 class ArticleController {
@@ -15,31 +16,22 @@ class ArticleController {
     public function getArticles ()
     {
         $statement = "SELECT * FROM article";
-        $result = $this->db->getData($statement, $this->classe);
+        $articles = $this->db->getData($statement, $this->classe);
 
-        $content = "<ul>";
-        foreach ($result as $value) {
-            $content .= "<li><a href='$value->id'>$value->name</a></li>";
-        }
-        $content .= "</ul>";
-
-        return $content;
+        include ROOT."templates/article/articles.php";
     }
 
     public function getArticle(int $id)
     {
         $statement = "SELECT * FROM article WHERE id = $id";
-
-        $result = $this->db->getData($statement, $this->classe, true);
-        if (!$result) {
+        
+        $article = $this->db->getData($statement, $this->classe, true);
+        if (!$article) {
             $e = new \Exception("Une erreur s'est produite lors de la récupération des données");
             return $e->getMessage();
         } else {
-            $content = "<ul>";
-            $content .= "<li><a href='$result->id'>$result->name</a></li>";
-            $content .= "</ul>";
-            
-            return $content;
+           
+            include ROOT. "templates/article/single.php";
         }
     }
 
@@ -48,13 +40,23 @@ class ArticleController {
         $post = [
             "title" => "Lorem Ipseum Dolor Sit Amet",
             "content" => "Lorem Ipseum Dolor Sit Amet Consecitur Lorem Ipseum Dolor Sit Amet",
-            "categorie_id" => 35,
-            "user_id" => 2
+            "categorieId" => 35,
+            "userId" => 2
         ];
 
-        $statement = "INSERT INTO article (title, content, categorie_id, user_id) VALUES (:title, :content, :categorie_id, :user_id)";
+        $article = new Article($post);
+        var_dump($article);
 
-        $this->db->prepare($statement, $post);
+        $statement = "INSERT INTO article (title, content, categorie_id, user_id, picture) VALUES (:title, :content, :categorie_id, :user_id, :picture)";
+
+        $prep = $this->db->getPDO()->prepare($statement);
+        $prep->bindValue(':title', $article->getTitle());
+        $prep->bindValue(':content', $article->getContent());
+        $prep->bindValue(':categorie_id', $article->getCategorieId());
+        $prep->bindValue(':user_id', $article->getUserId());
+        $prep->bindValue(':picture', $article->getPicture());
+
+        $prep->execute();
     }
 
     public function updateArticle (int $id)
