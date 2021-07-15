@@ -10,11 +10,17 @@ $items = new PageItems();
 $article = new ArticleController();
 
 echo $items->header();
-//Uncaught Error: Cannot access private property App\Entity\Article::$id in /home/ivanb/Desktop/Projects/POO_ipssi/src/Controller/ArticleController.php:22
-//echo $article->getArticles();
-try {
-    var_dump($article->getArticles());
-} catch (\Throwable $th) {
-    echo $th;
+
+
+if (!empty($_GET) && isset($_GET["method"])) {
+    if ($_GET["method"] === "getArticles") {
+        $manager = new ArticleController;
+        $manager->getArticles();
+    } else if ($_GET["method"] === "getArticle" && isset($_GET["id"])) {
+        $manager = new ArticleController;
+        $manager->getArticle($_GET["id"]);
+    }
 }
+
+
 echo $items->footer();
