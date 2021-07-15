@@ -33,6 +33,8 @@ header{
     position: fixed;
     width: 100%;
     box-shadow: 0px 2px 8px 2px $secondbg;
+    background-color: #272425;
+    z-index: 1;
     div{
         display: flex;
     }
@@ -57,6 +59,7 @@ a {
     color: $fontcolor;
     text-decoration : none;
     font-family: $fontfamily;
+    width: fit-content;
 }
 a {
     display: block;
@@ -267,4 +270,30 @@ $nav-toggle-z-index: 2;
     display: block !important;  
     animation: slide 1s !important;
     opacity: 1 !important;
+}
+
+#main{
+    width: 90%;
+    margin: auto;
+}
+
+//articles
+
+.animal-ct{
+    width: 46%;
+    display: flex;
+    margin: 2%;
+}
+.image-animal-ct{
+    width: 40%;
+    height: 100%;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.text-animal-ct{
+    width: 60%;
+    height: 100%;
+    padding: 8px;
 }
