@@ -3,6 +3,6 @@
 $config=[
     "host" => "localhost",
     "dbname" => "animalis",
-    "user" => "root",
-    "pwd" => ""
+    "user" => "toto",
+    "pwd" => "toto"
 ];

@@ -1,5 +1,5 @@
 <?php
-namespace App\Manager;
+namespace App\Controller;
 
 use Core\Database\Database;
 

@@ -1,5 +1,5 @@
 <?php
-namespace Pb\includes;
+namespace Pb;
 
 class PageItems{
     //header
