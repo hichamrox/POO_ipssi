@@ -20,9 +20,9 @@ class PageItems{
                 <div>
                     <div class="logo bounce" id="lg"></div>
                     <div class="menu" id="mn">
-                        <nav><a href="">Animaux</a></nav>
-                        <nav><a href="">Produits</a></nav>
-                        <nav><a href="">Blog</a></nav>
+                        <nav><a href="index.php?method=getAnimaux">Animaux</a></nav>
+                        <nav><a href="index.php?method=getProduits">Produits</a></nav>
+                        <nav><a href="index.php?method=getArticles">Blog</a></nav>
                         <nav><a href="">Dons</a></nav>
                         <nav><a href="">Connexion</a></nav>
                     </div>

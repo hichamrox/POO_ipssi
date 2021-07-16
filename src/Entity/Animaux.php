@@ -28,6 +28,21 @@ class Animaux {
      */
     private $photo;
 
+      /**
+     * @var varchar
+     */
+    private $race;
+
+    /**
+     * 
+     * @var varchar
+     */
+    private $age;
+     /**
+     * @var varchar
+     */
+    private $poids;
+   
    
 
     /**
@@ -116,6 +131,60 @@ class Animaux {
     public function setPhoto($photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of race
+     */
+    public function getRace()
+    {
+        return $this->race;
+    }
+
+    /**
+     * Set the value of race
+     */
+    public function setRace($race): self
+    {
+        $this->race = $race;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of age
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set the value of age
+     */
+    public function setAge($age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of poids
+     */
+    public function getPoids()
+    {
+        return $this->poids;
+    }
+
+    /**
+     * Set the value of poids
+     */
+    public function setPoids($poids): self
+    {
+        $this->poids = $poids;
 
         return $this;
     }

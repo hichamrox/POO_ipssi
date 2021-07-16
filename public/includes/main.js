@@ -3,6 +3,7 @@ const logo = document.getElementById('lg');
 const main = document.getElementById('main');
 const footer = document.getElementById('footer');
 const menuhb = document.getElementById('hm-menu');
+const adoption = document.getElementById('adoption');
 
 window.addEventListener('resize', reportWindowSize)
 
@@ -56,3 +57,7 @@ reportWindowSize();
 	hamburger.initialize();
 
 }());
+
+adoption.addEventListener('click', event => {
+    alert('vous venez d\'adopter cet animal ');
+  });

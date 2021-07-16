@@ -15,7 +15,7 @@ class AnimauxController {
 
     public function getAnimaux ()
     {
-        $statement = "SELECT * FROM animaux";
+        $statement = "SELECT * FROM animaux LIMIT 5";
         
         $photo = "./img";
         $animaux = $this->db->getData($statement, $this->classe);
@@ -28,6 +28,7 @@ class AnimauxController {
     public function getAnimal(int $id)
     {
         $statement = "SELECT * FROM animaux WHERE id = $id";
+        $photo = "./img";
         
         $animal = $this->db->getData($statement, $this->classe, true);
         if (!$animal) {

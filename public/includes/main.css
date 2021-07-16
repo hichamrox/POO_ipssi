@@ -368,6 +368,13 @@ footer a {
   margin-top: 12px;
 }
 
+.text-animal-ct.textAnimaux .boutonAdopter {
+  border: 2px solid white;
+  width: 100px;
+  padding-left: 17px;
+  margin-top: 12px;
+}
+
 .text-animal-ct.textAnimaux .infoAnimal {
   padding-top: 8px;
 }
