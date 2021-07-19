@@ -11,6 +11,8 @@
 </head>
 <body>
     <header>
+    <div style="position: absolute;width: 34px;height: 34px;right: 8px;top: 86px;background-image: url(../public/img/panier.png);background-size: cover;cursor: pointer;"></div>
+        <div style="position: absolute;width: 22px;height: 22px;right: 13px;display: flex;top: 100px;justify-content: center;font-size: 16px;font-weight: bold;cursor: pointer;"><p><?=$_SESSION["totalpannier"]?></p></div>
         <div>
             <div class="logo bounce <?php if($_SESSION["adminmode"]){echo "adminlg";} ?>" id="lg"></div>
             <div class="menu" id="mn">

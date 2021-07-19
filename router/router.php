@@ -6,6 +6,7 @@ use App\Controller\AnimauxController;
 use App\Controller\UserController;
 use App\Controller\DonationController;
 use App\Controller\ProductsController;
+use App\Controller\PannierController;
 
 if (!empty($_GET) && isset($_GET["page"])) {
     if ($_GET["page"] === "getArticles") {
@@ -83,6 +84,10 @@ if (!empty($_GET) && isset($_GET["page"])) {
     else if ($_GET["page"] == "niceUnDon"){
         $controller = new DonationController;
         $controller->create($_POST);
+    }
+    else if ($_GET["page"] == "addPanier" && isset($_GET["lasturl"])){
+        $controller = new PannierController;
+        $controller->addArticle($_GET["lasturl"]);
     }
 }else{
     $controller = new ArticleController;

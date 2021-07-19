@@ -49,6 +49,13 @@ function reportWindowSize() {
     }
 }
 reportWindowSize();
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const mid = urlParams.get('page');
+const addPannier = () => {
+    window.location.replace('/public/index.php?page=addPanier&lasturl='+mid);
+}
+
 
 document.getElementById('lg').addEventListener('click', event => {
     window.location.replace('/public/index.php?page=setAdminMode');

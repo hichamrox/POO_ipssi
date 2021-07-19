@@ -7,8 +7,8 @@
             <div class="infoAnimal"><?= $product->getName() ?> </div>
             <div class="infoAnimal"> Description : <?= $product->getDescription() ?> </div>
             <div class="infoAnimal"> Prix : <?= $product->getPrice() ?> </div>
-            <div class="boutonAdopter">
-                <a id="achat">  Acheter </a>
+            <div onclick="addPannier()" class="boutonAdopter" style="width:190px !important;">
+                <a id="achat" onclick="addPannier()">  Ajouter au pannier </a>
                 
             </div>
             <?php if($_SESSION["adminmode"] == true){ ?>

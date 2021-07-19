@@ -245,6 +245,7 @@ footer {
       padding-left: 21px;
       margin-top: 12px; }
     .text-animal-ct.textAnimaux .boutonAdopter {
+      cursor: pointer;
       border: 2px solid white;
       width: 100px;
       padding-left: 17px;
