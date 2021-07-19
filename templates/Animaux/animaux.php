@@ -12,7 +12,7 @@
             <div class="boutonVoir">
                 <a href="./index.php?page=getAnimal&id=<?= $animaux->getId() ?>" >  voir </a>
             </div>
-            <?php if($_SESSION["adminmode"] == true){ ?>
+            <?php if(isset($_SESSION["adminmode"]) && ($_SESSION["adminmode"] == true) ){ ?>
                 </br>
                 <a href="/public/index.php?page=delAnimal&id=<?= $animaux->getId() ?>">supprimer</a>
                 <?php }?>

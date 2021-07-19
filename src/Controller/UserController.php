@@ -34,22 +34,22 @@ class UserController extends DefaultController {
 
     public function adminMode()
     {
-        if($_SESSION["user"] == "1" && !isset($_SESSION["adminmode"])){
+        if(isset($_SESSION) && $_SESSION["user"] == "1" && !isset($_SESSION["adminmode"])){
             session_start();
             $_SESSION["adminmode"] = true;
             header('Location: /public/index.php?page=getArticles');
             exit();
-        }else if ($_SESSION["user"] == "1" && $_SESSION["adminmode"] == true){
+        }else if (isset($_SESSION) && $_SESSION["user"] == "1" && $_SESSION["adminmode"] == true){
             session_start();
             $_SESSION["adminmode"] = false;
             header('Location: /public/index.php?page=getArticles');
             exit();
-        }else if ($_SESSION["user"] == "1" && $_SESSION["adminmode"] == false){
+        }else if (isset($_SESSION) && $_SESSION["user"] == "1" && $_SESSION["adminmode"] == false){
             session_start();
             $_SESSION["adminmode"] = true;
             header('Location: /public/index.php?page=getArticles');
             exit();
-        }else if ($_SESSION["user"] == "1" && $_SESSION["adminmode"] == NULL){
+        }else if (isset($_SESSION) && $_SESSION["user"] == "1" && $_SESSION["adminmode"] == NULL){
             session_start();
             $_SESSION["adminmode"] = true;
             header('Location: /public/index.php?page=getArticles');

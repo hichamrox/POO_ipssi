@@ -1,4 +1,4 @@
-<?php if($_SESSION["adminmode"] == true){ ?>
+<?php if(isset($_SESSION["adminmode"]) && ($_SESSION["adminmode"] == true) ){  ?>
 <form method="POST" action="./index.php?page=createArticle" style="margin: auto;display: grid; margin-top: 24px; max-width: 640px;">
     <label for="title">Titre</label>
     <input type="text" name="title" id="title">
@@ -19,7 +19,7 @@
         <?= $article->getContent() ?>
             </br>
             <a href="/public/index.php?page=getArticle&id=<?= $article->getId() ?>"><?= $article->getTitle() ?></a>
-            <?php if($_SESSION["adminmode"] == true){ ?>
+            <?php if(isset($_SESSION["adminmode"]) && ($_SESSION["adminmode"] == true) ){ ?>
             </br>
             <a href="/public/index.php?page=delArticle&id=<?= $article->getId() ?>">supprimer</a>
             <?php }?>

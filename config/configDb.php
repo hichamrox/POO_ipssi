@@ -2,7 +2,7 @@
 
 $config=[
     "host" => "localhost",
-    "dbname" => "animalis",
-    "user" => "toto",
-    "pwd" => "toto"
+    "dbname" => "test",
+    "user" => "root",
+    "pwd" => ""
 ];
