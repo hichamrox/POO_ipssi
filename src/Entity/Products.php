@@ -15,7 +15,7 @@ class Products extends DefaultEntity  {
     private $name;
 
     /**
-     * @var string
+     * @var mixed
      */
     private $image;
 
@@ -58,35 +58,35 @@ class Products extends DefaultEntity  {
 
     public function setId($id): self
     {
-        return $this->id = $id;
+        $this->id = $id;
 
         return $this;
     }
 
     public function setName($name): self
     {
-        return $this->name = $name;
+        $this->name = $name;
 
         return $this;
     }
 
     public function setImage($image): self
     {
-        return $this->image = $image;
+        $this->image = $image;
 
         return $this;
     }
 
     public function setDescription($description): self
     {
-        return $this->description = $description;
+        $this->description = $description;
 
         return $this;
     }
 
     public function setPrice($price): self
     {
-        return $this->price = $price;
+        $this->price = $price;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <div class="animal-ct center">
         <div class="image-animal-ct">
-            <img src="<?='./img/'.$product->getImage() ?>.jpg" alt="Animal">
+            <img src="<?php $img=$product->getImage(); echo "data:image/jpg;base64,".base64_encode($img).""; ?>" class="im-ct" alt="Animal">
             </a>
         </div>
         <div class="text-animal-ct textAnimaux">

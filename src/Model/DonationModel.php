@@ -9,5 +9,5 @@ use Core\Model\DefaultModel;
  */
 class DonationModel extends DefaultModel{
 
-    protected $table = "donations";
+    protected $table = "donation";
 }

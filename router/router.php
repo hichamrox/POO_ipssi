@@ -10,7 +10,7 @@ use App\Controller\ProductsController;
 if (!empty($_GET) && isset($_GET["page"])) {
     if ($_GET["page"] === "getArticles") {
         $controller = new ArticleController;
-        $controller->index();
+        $controller->index($_POST);
     }
     else if ($_GET["page"] === "getArticle" && isset($_GET["id"])) {
         $controller = new ArticleController;
@@ -64,6 +64,10 @@ if (!empty($_GET) && isset($_GET["page"])) {
         $controller = new ArticleController;
         $controller->create($_POST);
     }
+    else if ($_GET["page"] == "updateArticle" && isset($_GET["id"])){
+        $controller = new ArticleController;
+        $controller->update($_POST, $_GET["id"]);
+    }
     else if ($_GET["page"] == "delProduct" && isset($_GET["id"])){
         $controller = new ProductsController;
         $controller->deleteProduct($_GET["id"]);
@@ -71,6 +75,14 @@ if (!empty($_GET) && isset($_GET["page"])) {
     else if ($_GET["page"] == "delAnimal" && isset($_GET["id"])){
         $controller = new AnimauxController;
         $controller->deleteAnimal($_GET["id"]);
+    }
+    else if ($_GET["page"] == "createProduct"){
+        $controller = new ProductsController;
+        $controller->create($_POST);
+    }
+    else if ($_GET["page"] == "niceUnDon"){
+        $controller = new DonationController;
+        $controller->create($_POST);
     }
 }else{
     $controller = new ArticleController;

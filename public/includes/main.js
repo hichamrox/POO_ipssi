@@ -22,16 +22,23 @@ function reportWindowSize() {
         for (let i = 0; i < elements.length; i++){
             elements[i].style.display = "block";
         }
-        let images = document.querySelector('img');
+        let images = document.getElementsByClassName('im-ct');
         if(images !== null){
             if (window.innerWidth < 551){
-                images.style.width = `${(window.innerWidth - 50)}px`
+                for (let i = 0; i < images.length; i++) {
+                    let element = images[i];
+                    element.style.width = `${(window.innerWidth - 50)}px`
+                };
             }
         }
     }else{
-        let images = document.querySelector('img');
+        let images = document.getElementsByClassName('im-ct');
         if(images !== null){
-            images.style.width = `500px`
+            for (let i = 0; i < images.length; i++) {
+                let element = images[i];
+                element.style.width = `500px`
+            };
+            
         }
         menu.style.display = "flex";
         document.querySelector('.nav-toggle').style.display = "none";

@@ -31,7 +31,7 @@ class Article extends DefaultEntity {
     private $user_id;
 
     /**
-     * @var string
+     * @var mixed
      */
     private $picture;
 

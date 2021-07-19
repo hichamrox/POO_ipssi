@@ -34,7 +34,7 @@ class DefaultModel {
 
     public function findLast()
     {
-        $statement = "SELECT * FROM $this->table ORDER BY ID DESC LIMIT 1";
+        $statement = "SELECT * FROM $this->table ORDER BY id DESC LIMIT 1";
         return $this->db->getData($statement, $this->className);
     }
 

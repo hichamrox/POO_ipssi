@@ -16,7 +16,7 @@ class Donation extends DefaultEntity  {
     private $donationdate;
 
     /**
-     * @var string
+     * @var int
      */
     private $money;
 
@@ -40,21 +40,21 @@ class Donation extends DefaultEntity  {
 
     public function setId($id): self
     {
-        return $this->id = $id;
+        $this->id = $id;
 
         return $this;
     }
 
     public function setMoney($money): self
     {
-        return $this->money = $money;
+        $this->money = $money;
 
         return $this;
     }
 
     public function setDonationdate($donationdate): self
     {
-        return $this->donationdate = $donationdate;
+        $this->donationdate = $donationdate;
 
         return $this;
     }

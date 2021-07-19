@@ -47,6 +47,7 @@ class Database {
     public function getData (string $statement, $classe, $one = false)
     {
         $query = $this->pdo->query($statement, \PDO::FETCH_CLASS, "App\Entity\\". $classe);
+
         $data = "";
         if ($one) {
             $data = $query->fetch();
