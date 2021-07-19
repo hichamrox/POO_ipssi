@@ -1,7 +1,9 @@
 <?php
 namespace App\Entity;
 
-class Animaux {
+use Core\Entity\DefaultEntity;
+
+class Animaux extends DefaultEntity{
 
     /**
      * @var int

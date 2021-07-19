@@ -2,88 +2,61 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use Core\Database\Database;
+use App\Model\ArticleModel;
+use App\Model\CategorieModel;
+use App\Model\UserModel;
+use Core\Controller\DefaultController;
 
-class ArticleController {
+class ArticleController extends DefaultController {
+    
 
-    private $classe = "Article";
-
-    public function __construct()
+    public function index()
     {
-        $this->db = new Database;
+        $model = new ArticleModel;
+        $articles = $model->findAll();
+
+        $this->render("article/articles", [
+            "articles" => $articles
+        ]);
     }
 
-    public function getArticles ()
+    public function single($id)
     {
-        $statement = "SELECT * FROM article";
-        $articles = $this->db->getData($statement, $this->classe);
-        
+        $model = new ArticleModel;
+        $article = $model->find($id);
 
-        include ROOT."templates/article/articles.php";
+        $this->render("article/article", [
+            "article" => $article
+        ]);
     }
 
-    public function getArticle(int $id)
+    public function create($data)
     {
-        $statement = "SELECT * FROM article WHERE id = $id";
-        
-        $article = $this->db->getData($statement, $this->classe, true);
-        if (!$article) {
-            $e = new \Exception("Une erreur s'est produite lors de la récupération des données");
-            return $e->getMessage();
+        if (!empty($data)) {
+            $article = new Article($data);
+            
+            $statement = "INSERT INTO article (title, content, categorie_id, user_id, picture) VALUES (:title, :content, :categorie_id, :user_id, :picture)";
+            
+            $prep = $this->db->getPDO()->prepare($statement);
+            $prep->bindValue(':title', $article->getTitle());
+            $prep->bindValue(':content', $article->getContent());
+            $prep->bindValue(':categorie_id', $article->getCategorieId());
+            $prep->bindValue(':user_id', $article->getUserId());
+            $prep->bindValue(':picture', $article->getPicture());
+            
+            $prep->execute();
+            
+            return $this->redirectToRoute("getArticles");
         } else {
-           
-            include ROOT. "templates/article/single.php";
+            $categorieModel = new CategorieModel;
+            $categories = $categorieModel->findAll();
+            $userModel = new UserModel;
+            $users = $userModel->findAll();
+            $this->render("article/create", [
+                "categories" => $categories,
+                "users" => $users
+            ]);
         }
     }
 
-    public function saveArticle ()
-    {
-        $post = [
-            "title" => "Lorem Ipseum Dolor Sit Amet",
-            "content" => "Lorem Ipseum Dolor Sit Amet Consecitur Lorem Ipseum Dolor Sit Amet",
-            "categorieId" => 35,
-            "userId" => 2
-        ];
-
-        $article = new Article($post);
-        var_dump($article);
-
-        $statement = "INSERT INTO article (title, content, categorie_id, user_id, picture) VALUES (:title, :content, :categorie_id, :user_id, :picture)";
-
-        $prep = $this->db->getPDO()->prepare($statement);
-        $prep->bindValue(':title', $article->getTitle());
-        $prep->bindValue(':content', $article->getContent());
-        $prep->bindValue(':categorie_id', $article->getCategorieId());
-        $prep->bindValue(':user_id', $article->getUserId());
-        $prep->bindValue(':picture', $article->getPicture());
-
-        $prep->execute();
-    }
-
-    public function updateArticle (int $id)
-    {
-        $post = [
-            "title" => "Lorem Ipseum Dolor Sit Amet",
-            "content" => "Lorem Ipseum Dolor Sit Amet Consecitur Lorem Ipseum Dolor Sit Amet",
-            "categorie_id" => 35,
-            "user_id" => 2
-        ];
-
-        $statement = "UPDATE article SET (
-            title= :title,
-            content= :content,
-            categorie_id= :categorie_id,
-            user_id = :user_id
-            WHERE id = $id
-        )";
-
-        $this->db->prepare($statement, $post);
-    }
-
-    public function delete(int $id)
-    {
-        $statement = "DELETE FROM article WHERE id = $id";
-
-        $this->db->prepare($statement);
-    }
 }

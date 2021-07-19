@@ -4,6 +4,7 @@ const main = document.getElementById('main');
 const footer = document.getElementById('footer');
 const menuhb = document.getElementById('hm-menu');
 const adoption = document.getElementById('adoption');
+const achat = document.getElementById('achat');
 
 window.addEventListener('resize', reportWindowSize)
 
@@ -57,7 +58,15 @@ reportWindowSize();
 	hamburger.initialize();
 
 }());
+if(adoption !== null) {
+    adoption.addEventListener('click', event => {
+        alert('vous venez d\'adopter cet animal ');
+      });
+}
+if(achat !== null){
+    achat.addEventListener('click', event => {
+        alert("achat effectué !");
+      });
+}
 
-adoption.addEventListener('click', event => {
-    alert('vous venez d\'adopter cet animal ');
-  });
+  

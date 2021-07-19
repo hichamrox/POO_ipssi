@@ -2,42 +2,34 @@
 namespace App\Controller;
 
 use App\Entity\Animaux;
+use App\Model\AnimalModel;
+use Core\Controller\DefaultController;
 use Core\Database\Database;
 
-class AnimauxController {
+class AnimauxController extends DefaultController {
 
-    private $classe = "Animaux";
 
-    public function __construct()
+
+
+
+    public function index()
     {
-        $this->db = new Database;
+        $model = new AnimalModel;
+        $animaux = $model->findAll();
+
+        $this->render("Animaux/animaux", [
+            "animaux" => $animaux
+        ]);
     }
 
-    public function getAnimaux ()
+    public function single($id)
     {
-        $statement = "SELECT * FROM animaux LIMIT 5";
-        
-        $photo = "./img";
-        $animaux = $this->db->getData($statement, $this->classe);
+        $model = new AnimalModel;
+        $animal = $model->find($id);
 
-        
-
-        include ROOT."templates/Animaux/animaux.php";
-    }
-
-    public function getAnimal(int $id)
-    {
-        $statement = "SELECT * FROM animaux WHERE id = $id";
-        $photo = "./img";
-        
-        $animal = $this->db->getData($statement, $this->classe, true);
-        if (!$animal) {
-            $e = new \Exception("Une erreur s'est produite lors de la récupération des données");
-            return $e->getMessage();
-        } else {
-           
-            include ROOT. "templates/Animaux/animal.php";
-        }
+        $this->render("Animaux/animal", [
+            "animal" => $animal
+        ]);
     }
 
 }
