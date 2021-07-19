@@ -14,6 +14,10 @@
             <div class="boutonAdopter">
                 <a id="adoption" href="./index.php?page=getAnimal&id=<?= $animal->getId() ?>" >  Adopter </a>
             </div>
+            <?php if($_SESSION["adminmode"] == true){ ?>
+                </br>
+                <a href="/public/index.php?page=delAnimal&id=<?= $animal->getId() ?>">supprimer</a>
+                <?php }?>
             
             </br>
             

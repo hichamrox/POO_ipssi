@@ -12,7 +12,7 @@
 <body>
     <header>
         <div>
-            <div class="logo bounce" id="lg"></div>
+            <div class="logo bounce <?php if($_SESSION["adminmode"]){echo "adminlg";} ?>" id="lg"></div>
             <div class="menu" id="mn">
                 <nav><a href="index.php?page=getAnimaux">Animaux</a></nav>
                 <nav><a href="index.php?page=getProducts">Produits</a></nav>
@@ -36,7 +36,6 @@
         </div>
     </header>
     <div id="main">
-        <?= var_dump($_SESSION["user"]);?>
     <?= $content ?>
     </div>
         <footer id="footer">

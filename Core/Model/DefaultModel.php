@@ -38,5 +38,18 @@ class DefaultModel {
         return $this->db->getData($statement, $this->className);
     }
 
+    public function deleteRow($id){
+        if($_SESSION["adminmode"] == true){
+            $statement = "DELETE FROM $this->table WHERE id = $id";
+            return $this->db->prepare($statement);
+        }
+    }
+
+    public function specialquery($statement){
+        if($_SESSION["adminmode"] == true){
+            return $this->db->prepare($statement);
+        }
+    }
+
 
 }

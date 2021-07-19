@@ -28,4 +28,13 @@ class ProductsController extends DefaultController {
         ]);
     }
 
+    public function deleteProduct($id){
+        if($_SESSION["adminmode"] == true){
+            $model = new ProductsModel;
+            $model->deleteRow($id);
+        }
+        header('Location: /public/index.php?page=getProducts');
+        exit();
+    }
+
 }

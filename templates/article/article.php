@@ -8,6 +8,9 @@
             <div class="infoAnimal"><?= $article->getContent() ?> </div>
             
             </br>
+            <?php if($_SESSION["adminmode"] == true){ ?>
+            <a href="/public/index.php?page=delArticle&id=<?= $article->getId() ?>">supprimer</a>
+            <?php }?>
             
         </div>
     </div>

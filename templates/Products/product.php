@@ -9,8 +9,12 @@
             <div class="infoAnimal"> Prix : <?= $product->getPrice() ?> </div>
             <div class="boutonAdopter">
                 <a id="achat">  Acheter </a>
+                
             </div>
-            
+            <?php if($_SESSION["adminmode"] == true){ ?>
+                </br>
+                <a href="/public/index.php?page=delProduct&id=<?= $product->getId() ?>">supprimer</a>
+            <?php }?>
             </br>
             
         </div>

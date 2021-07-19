@@ -8,10 +8,6 @@ use Core\Database\Database;
 
 class AnimauxController extends DefaultController {
 
-
-
-
-
     public function index()
     {
         $model = new AnimalModel;
@@ -30,6 +26,15 @@ class AnimauxController extends DefaultController {
         $this->render("Animaux/animal", [
             "animal" => $animal
         ]);
+    }
+
+    public function deleteAnimal($id){
+        if($_SESSION["adminmode"] == true){
+            $model = new AnimalModel;
+            $model->deleteRow($id);
+        }
+        header('Location: /public/index.php?page=getAnimaux');
+        exit();
     }
 
 }

@@ -32,9 +32,38 @@ class UserController extends DefaultController {
         }
     }
 
+    public function adminMode()
+    {
+        if($_SESSION["user"] == "1" && !isset($_SESSION["adminmode"])){
+            session_start();
+            $_SESSION["adminmode"] = true;
+            header('Location: /public/index.php?page=getArticles');
+            exit();
+        }else if ($_SESSION["user"] == "1" && $_SESSION["adminmode"] == true){
+            session_start();
+            $_SESSION["adminmode"] = false;
+            header('Location: /public/index.php?page=getArticles');
+            exit();
+        }else if ($_SESSION["user"] == "1" && $_SESSION["adminmode"] == false){
+            session_start();
+            $_SESSION["adminmode"] = true;
+            header('Location: /public/index.php?page=getArticles');
+            exit();
+        }else if ($_SESSION["user"] == "1" && $_SESSION["adminmode"] == NULL){
+            session_start();
+            $_SESSION["adminmode"] = true;
+            header('Location: /public/index.php?page=getArticles');
+            exit();
+        }else{
+            header('Location: /public/index.php?page=getArticles');
+            exit();
+        }
+    }
+
     public function disconnect()
     {
         unset($_SESSION["user"]);
+        unset($_SESSION["adminmode"]);
         header('Location: /public/index.php?page=getArticles');
         exit();
     }
