@@ -27,11 +27,12 @@
             </div>            
         </div>
         <div id="hm-menu">
-            <nav><a href="">Animaux</a></nav>
-            <nav><a href="">Produits</a></nav>
-            <nav><a href="">Blog</a></nav>
-            <nav><a href="">Dons</a></nav>
-            <nav><a href="">Connexion</a></nav>
+            <nav><a href="index.php?page=getAnimaux">Animaux</a></nav>
+            <nav><a href="index.php?page=getProducts">Produits</a></nav>
+            <nav><a href="index.php?page=getArticles">Blog</a></nav>
+            <nav><a href="index.php?page=getDons">Dons</a></nav>
+            <nav><a href="<?php if(!isset($_SESSION["user"])){ echo "index.php?page=connexionPage"; } else {echo "index.php?page=deconnexion";}?>">
+            <?php if(!isset($_SESSION["user"])){ echo "Connexion"; } else {echo "Deconnexion";}?></a></nav>
         </div>
     </header>
     <div id="main">

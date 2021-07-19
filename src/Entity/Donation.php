@@ -4,6 +4,7 @@ namespace App\Entity;
 use Core\Entity\DefaultEntity;
 
 class Donation extends DefaultEntity  {
+    
     /**
      * @var int
      */
@@ -15,7 +16,7 @@ class Donation extends DefaultEntity  {
     private $donationdate;
 
     /**
-     * @var int
+     * @var string
      */
     private $money;
 
