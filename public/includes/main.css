@@ -40,6 +40,7 @@ header {
   width: 64px;
   height: 64px;
   margin: 8px;
+  cursor: pointer;
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
