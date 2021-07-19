@@ -11,6 +11,7 @@ class DonationController extends DefaultController {
 
     public function index()
     {
+<<<<<<< HEAD
         if($_SESSION["adminmode"] == true){
             $model = new DonationModel;
             $don = $model->findLast();
@@ -50,7 +51,14 @@ class DonationController extends DefaultController {
             header('Location: /public/index.php?page=getDons');
             exit();
         }
+=======
+        $model = new DonationModel;
+
+            $don = $model->findAll();
+>>>>>>> 13b1f204086b1cc316e54fefdea938d1b0db3828
         
     }
+
+   
 
 }

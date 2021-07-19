@@ -30,7 +30,7 @@
             <div class="infoAnimal">Catégorie : <?= $article->getCategorieId() ?> </div>
             
             </br>
-            <?php if($_SESSION["adminmode"] == true){ ?>
+            <?php if(isset($_SESSION) && ($_SESSION["adminmode"]) == true){ ?>
             <a href="/public/index.php?page=delArticle&id=<?= $article->getId() ?>">supprimer</a>
             <?php }?>
             

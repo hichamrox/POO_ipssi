@@ -32,7 +32,7 @@
                 <a href="./index.php?page=getProduct&id=<?= $product->getId() ?>" >  voir </a>
                 
             </div>
-            <?php if($_SESSION["adminmode"] == true){ ?>
+            <?php if(isset($_SESSION["adminmode"]) && ($_SESSION["adminmode"] == true) ){ ?>
                 </br>
                 <a href="/public/index.php?page=delProduct&id=<?= $product->getId() ?>">supprimer</a>
                 <?php }?>
